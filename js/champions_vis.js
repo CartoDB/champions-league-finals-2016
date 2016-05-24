@@ -13,6 +13,13 @@
         "updated_at": "2016-05-23T11:50:30+00:00",
         "widgets": [
             {
+                "type": "formula",
+                "title": "Total conversación",
+                "layer_id": "e487cc62-45a0-4cbe-860c-2c6a14752755",
+                "operation": "sum",
+                "column": "cartodb_id"
+            },
+            {
                 "type": "category",
                 "title": "Jugadores",
                 "layer_id": "e487cc62-45a0-4cbe-860c-2c6a14752755",

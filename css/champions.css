@@ -65,7 +65,9 @@ body {
     background-size: 90%;
 }
 
-
+.CDB-Shape-threePoints {
+    display: none; 
+}
 @media  only screen and (min-device-pixel-ratio: 2),  only screen and (min-resolution: 192dpi) {
         .CDB-Dashboard-menuLogo {
             background-image: url(../img/champions.png);
