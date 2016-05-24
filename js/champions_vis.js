@@ -30,6 +30,17 @@
                     "aggregationColumn": "cartodb_id",
                     "sync": true,
                 },
+            },
+            {
+                "layer_id": "e487cc62-45a0-4cbe-860c-2c6a14752755",
+                "type": "time-series",
+                "columnType": "number",
+                "column": "postedtime",
+                "options": {
+                    "bins": 256,
+                    "start": 1454885167, //1454672461,
+                    "end": 1454903093
+                }
             }
         ],
         "datasource": {
