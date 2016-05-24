@@ -8,7 +8,7 @@
         "description": "Real Madrid vs. Atlético de Madrid. Powered by CartoDB.",
         "user": {
             "fullname": "Real Madrid",
-            "avatar_url": "real_madrid.png"
+            "avatar_url": "img/real_madrid.png"
         },
         "updated_at": "2016-05-23T11:50:30+00:00",
         "widgets": [
