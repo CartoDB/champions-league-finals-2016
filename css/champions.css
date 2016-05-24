@@ -1,0 +1,329 @@
+html,
+body {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.CDB-Widget-options {
+    display: none !important;
+}
+
+.CDB-Size-medium {
+    text-overflow: ellipsis !important;
+    text-transform: uppercase !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    line-height: 11px !important;
+    height: 11px;
+    overflow: hidden;
+}
+
+/*
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:first-child .CDB-Widget-progressState {
+    background: #1685cb !important;
+}
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(2) .CDB-Widget-progressState {
+    background: #e86225 !important;
+}
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(3) .CDB-Widget-progressState {
+    background: #7dbe37 !important;
+}
+*/
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:first-child .is-disabled .CDB-Widget-progressState {
+    background: #eee !important;
+}
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(2) .is-disabled .CDB-Widget-progressState {
+    background: #eee !important;
+}
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(3) .is-disabled .CDB-Widget-progressState {
+    background: #eee !important;
+}
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:first-child .CDB-Size-medium {
+    font-size: 12px !important;
+}
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(2) .CDB-Size-medium {
+    font-size: 12px !important;
+}
+
+.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(3) .CDB-Size-medium {
+    font-size: 12px !important;
+}
+
+.CDB-Dashboard-menuLogo {
+    background-image: url(../img/champions.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+}
+
+
+@media  only screen and (min-device-pixel-ratio: 2),  only screen and (min-resolution: 192dpi) {
+        .CDB-Dashboard-menuLogo {
+            background-image: url(../img/champions.png);
+            background-size: 90%;
+        }
+}
+
+.CDB-Dashboard-menuLogo .CDB-IconFont {
+    display: none;
+}
+
+/* score */
+
+.scoreboardmobile {
+    margin-top: 8px;
+    display: none;
+}
+
+.scoreboardmobile .CDB-Widget-content {
+    margin-top: 0;
+}
+
+.scroreboardmobile .CDB-Widget {
+    padding: 14px 0;
+}
+
+.scoreboardmobile .CDB-Widget {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+
+.CDB-Widget-listItem .CDB-Widget-textSmaller {
+    display: none;
+}
+
+.CDB-Widget-controlButtonIcon--pause {
+    margin-top: -12px;
+}
+
+.CDB-Widget-canvas {
+    background: #fff;
+}
+
+.CDB-Widget {
+    border-bottom: 2px solid #f9f9f9;
+    margin-bottom: 0;
+}
+
+.CDB-Widget-score {
+    text-align: center;
+}
+
+.CDB-Widget-scoreInner {
+    width: auto;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.CDB-Widget-scoreItem {
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 1px solid #F2F2F2;
+}
+
+.CDB-Widget-scoreItem:first-child {
+    border-left: 0;
+}
+
+.CDB-Widget-scoreTeam,
+.CDB-Widget-scorePoints {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.CDB-Widget-scoreTeam {
+    font-size: 16px;
+    line-height: 22px;
+    color: #636D72;
+}
+
+.CDB-Widget-scorePoints {
+    font-size: 26px;
+    line-height: 34px;
+    color: #2E3C43;
+    width: 40px;
+    text-align: center;
+}
+
+.CDB-Widget-content.CDB-Widget-content--timeSeries svg text {
+    font-size: 10px;
+}
+
+image.CDB-Annotation {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+@media only screen and (max-width: 960px) and (min-width: 320px) {
+    .CDB-Widget-info {
+        -webkit-justify-content: flex-start;
+        -moz-justify-content: flex-start;
+        -ms-justify-content: flex-start;
+        justify-content: flex-start;
+    }
+    .scoreboardmobile {
+        display: block;
+    }
+    .scoredesktop {
+        display: none;
+    }
+    .CDB-Widget-infoDescription {
+        margin-right: 14px;
+        margin-left: 4px;
+    }
+    .CDB-Widget-content.CDB-Widget-content--timeSeries img.CDB-Annotation {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .CDB-Widget-timeSeriesTimeInfo .CDB-Widget-textBig {
+        font-size: 12px;
+    }
+    .CDB-Widget-body--timeSeries {
+        display: block;
+    }
+    .CDB-Widget--timeSeries {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        max-height: 100px;
+    }
+    .CDB-Widget-header--timeSeries {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .CDB-Widget-content.CDB-Widget-content--timeSeries svg {
+        width: 100% !important;
+    }
+    .CDB-Widget-content--timeSeries {
+        width: auto;
+    }
+    .CDB-Widget-header--timeSeries {
+        margin-right: 24px;
+    }
+    .CDB-Widget-header--timeSeries .CDB-Widget-textBig {
+        font-size: 14px;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:nth-child(3)  {
+        width: 410px;
+        max-width: 410px;
+        min-width: 410px;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:nth-child(3) .CDB-Widget-listGroup {
+        min-width: 560px;
+        width: 560px;
+        max-width: 560px;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:nth-child(3) .CDB-Widget-listItem {
+        width: 200px;
+        display: inline-block;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget {
+        border-bottom: 0;
+        border-left: 2px solid #f9f9f9;
+    }
+    .CDB-Widget-canvasInner .scoredesktop + .CDB-Widget{
+        border-left: 0;
+    }
+    .CDB-Widget-canvas--withMenu {
+        margin-left: 76px;
+    }
+    .CDB-Widget-canvas {
+        width: calc(100% - 76px);
+        min-width: calc(100% - 76px);
+        max-width: calc(100% - 76px);
+    }
+    image.CDB-Annotation {
+        width: 20px !important;
+        height: 20px !important;
+        transform: translateY(-16px);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .CDB-Dashboard-belowMap .CDB-Widget {
+        width: auto;
+        min-width: auto;
+        padding-bottom: 0;
+        min-height: 80px;
+        height: auto;
+    }
+    .CDB-Dashboard-belowMap .CDB-Widget-contentSpaced {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 8px;
+    }
+    .CDB-Widget-canvas {
+        height: 205px;
+        min-height: 205px;
+    }
+    .CDB-Dashboard-canvas {
+        padding: 2px;
+    }
+    .scoreboardmobile {
+        margin-top: 2px;
+    }
+    .CDB-Dashboard-belowMap {
+        margin-top: 0;
+    }
+    .CDB-Widget-canvas {
+        margin-top: 0;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .CDB-Widget-header--timeSeries {
+        margin-right: 8px
+    }
+    .CDB-Widget-header--timeSeries {
+        margin-right: 8px !important;
+    }
+    .CDB-Widget-content.CDB-Widget-content--timeSeries {
+        margin-left: 6px !important;
+        margin-right: 6px !important;
+    }
+    .CDB-Widget-canvas--withMenu {
+        margin-left: 0;
+    }
+    .CDB-Map {
+        border-radius: 0;
+    }
+    .CDB-Dashboard-menuLogo {
+        background-size: 80%;
+    }
+    .CDB-Widget {
+        padding: 8px;
+    }
+    .CDB-Widget-content {
+        margin-top: 8px;
+    }
+    .CDB-Widget-filter {
+        margin-top: 0;
+    }
+    .CDB-Dashboard-menuHeaderMobile {
+        position: absolute;
+        z-index: 10;
+    }
+    .CDB-Dashboard-menuInner {
+        z-index: 11;
+    }
+    .CDB-Dashboard-menuTexts {
+        width: auto;
+        right: 24px;
+    }
+}
+
+.CDB-Widget-info dt, .CDB-Widget-info dd{
+    display: none;
+}
+
