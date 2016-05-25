@@ -1,3 +1,4 @@
 git+ssh://git@github.com/CartoDB/powertrack.git
 requests_oauthlib
 git+ssh://github.com/CartoDB/cartodb-python.git
+python-dateutil

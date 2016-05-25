@@ -20,30 +20,29 @@ p = PowerTrack(api="search")
 cdb = CartoDBAPIKey(API_KEY, ACCOUNT_NAME)
 
 categories = [
-        ["#HalaMadrid", "#APorLaUndecima", "#RMUCL", "#RMFans", "#RMCity", "#RmHistory"],
+        ["#HalaMadrid", "#APorLaUndecima", "#RMUCL", "#RMFans", "#RMCity", "#RmHistory", "@realmadrid", "@realmadriden", "@readmadridfra", "@realmadridarab", "@realmadridjapan"],
         ["#LaUndecima"],
         ["Zidane"],
-        ["Gareth Bale"],
+        ["Gareth Bale", "@GarethBale11"],
         ["Sergio Ramos", "@SergioRamos"],
         ["Cristiano Ronaldo", "@Cristiano"],
         ["Keylor Navas", "@NavasKeylor"],
-        ["Pepe", "@officialpepe"],
+        ["@officialpepe"],
         ["Luka Modric", "@lm19official"],
         ["Lucas Vázquez", "@Lucasvazquez91"],
         ["Casemiro", "@Casemiro"],
-        ["James", "@jamesdrodriguez"],
+        ["@jamesdrodriguez"],
         ["Toni Kroos", "@ToniKroos"],
         ["Benzema", "@Benzema"],
-        ["Bale", "@GarethBale11"],
-        ["Isco", "@isco_alarcon"],
+        ["@isco_alarcon"],
         ["Dani Carvajal", "@DaniCarvajal92"],
-        ["Marcelo", "@MarceloM12"],
-        ["Varane", "@raphaelvarane"],
-        ["Nacho", "@nachofi1990"],
+        ["@MarceloM12"],
+        ["@raphaelvarane"],
+        ["@nachofi1990"],
         ["Kiko Casilla", "@KikoCasilla13"],
         ["Rubén Yáñez", "@RYanez93"],
         ["Mateo Kovacic", "@MateoKova16"],
-        ["Jesé", "@JeseRodriguez10"],
+        ["@JeseRodriguez10"],
         ["Arbeloa", "@aarbeloa17"],
 ]
 
@@ -52,7 +51,8 @@ table_name = TABLE_NAME
 for i, category in enumerate(categories):
     print category
     new_job = p.jobs.create(START_TIMESTAMP, END_TIMESTAMP, TABLE_NAME, category, geo_enrichment=False)
-    new_job.export_tweets(category=i + 1, append=False if i == 0 else True)
+    if i != 14:  # 14 is Bale duplicated in the original player list
+        new_job.export_tweets(category=i + 1, append=False if i == 0 else True)
 
 import_job = FileImport(table_name + ".csv", cdb)
 import_job.run()

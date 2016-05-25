@@ -2,3 +2,4 @@
 env
 httpserv.py
 *.csv
+aws-lambda
