@@ -310,6 +310,7 @@ image.CDB-Annotation {
     display: none;
 }
 
+
 @media (max-width: 600px) {
     .CDB-Dashboard-belowMap .CDB-Widget {
         min-height: 44px;
