@@ -248,7 +248,7 @@ image.CDB-Annotation {
         min-height: 205px;
     }
     .CDB-Dashboard-canvas {
-        padding: 2px;
+        padding: 0;
     }
     .scoreboardmobile {
         margin-top: 2px;
@@ -394,7 +394,7 @@ image.CDB-Annotation {
     .CDB-Dashboard-menuHeaderMobile .CDB-Dashboard-menuMedia {
         display: none;
     }
-
+    .D
 
 } 
 
