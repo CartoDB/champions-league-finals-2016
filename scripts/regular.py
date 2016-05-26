@@ -55,7 +55,7 @@ def get_tweets(event, context):
     tmp_table_filename = tmp_table_name
 
     for i, category in enumerate(categories):
-        new_job = p.jobs.create(start_timestamp, end_timestamp, tmp_table_name, category, False)
+        new_job = p.jobs.create(start_timestamp, end_timestamp, tmp_table_name, category)
         new_job.export_tweets(category=i + 1, append=False if i == 0 else True)
 
     # Now, because we can't use ogr2ogr, here comes the HACK!
