@@ -63,27 +63,55 @@
         "layers": [
             {
                 "options": {
-                    "visible": true,
-                    "type": "Tiled",
-                    "name": "Dark matter (lite)",
-                    "className": "dark_matter_lite_rainbow",
-                    "base_type": "default",
-                    "urlTemplate": "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png",
-                    "minZoom": "0",
-                    "maxZoom": "18",
-                    "attribution": "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"http://cartodb.com/attributions\">CartoDB</a>",
-                    "subdomains": "abcd",
-                    "style": null,
-                    "read_only": true,
-                    "category": "CartoDB",
-                    "order": 0,
-                    "id": "90654225-5b6d-4be6-be89-1987a91fe824"
+                    "type": "Plain",
+                    "base_type": "plain",
+                    "className": "plain",
+                    "color": "#1b2432",
+                    "image": "",
+                    "maxZoom": 32,
+                    "id": "37d1339b-9ea6-425f-88d2-094e8fea7c8a",
+                    "order": 0
                 },
                 "infowindow": null,
                 "tooltip": null,
-                "id": "e326cfa4-5854-47eb-8e5a-9d6fd61b1c96",
+                "id": "37d1339b-9ea6-425f-88d2-094e8fea7c8a",
                 "order": 0,
-                "type": "tiled"
+                "type": "background"
+            },
+            {
+                "id": "d5652493-af1c-4b5f-9626-2712137a0fa0",
+                "type": "CartoDB",
+                "infowindow": {
+                    "fields": [],
+                    "template_name": "table/views/infowindow_light",
+                    "template": "<div class=\"CDB-infowindow CDB-infowindow--light js-infowindow\">\n  <div class=\"CDB-infowindow-container\">\n    <div class=\"CDB-infowindow-bg\">\n      <div class=\"CDB-infowindow-inner\">\n        <ul class=\"CDB-infowindow-list js-content\">\n          {{#loading}}\n            <div class=\"CDB-Loader js-loader is-visible\"></div>\n          {{/loading}}\n          {{#content.fields}}\n          <li class=\"CDB-infowindow-listItem\">\n            {{#title}}<h5 class=\"CDB-infowindow-subtitle\">{{title}}</h5>{{/title}}\n            {{#value}}<h4 class=\"CDB-infowindow-title\">{{{ value }}}</h4>{{/value}}\n            {{^value}}<h4 class=\"CDB-infowindow-title\">null</h4>{{/value}}\n          </li>\n          {{/content.fields}}\n        </ul>\n      </div>\n    </div>\n    <div class=\"CDB-hook\">\n      <div class=\"CDB-hook-inner\"></div>\n    </div>\n  </div>\n</div>\n",
+                    "alternative_names": {},
+                    "width": 226,
+                    "maxHeight": 180
+                },
+                "tooltip": {
+                    "fields": [],
+                    "template_name": "tooltip_light",
+                    "template": "<div class=\"CDB-Tooltip CDB-Tooltip--isLight\">\n  <ul class=\"CDB-Tooltip-list\">\n    {{#fields}}\n      <li class=\"CDB-Tooltip-listItem\">\n        {{#title}}\n          <h3 class=\"CDB-Tooltip-listTitle\">{{{ title }}}</h3>\n        {{/title}}\n        <h4 class=\"CDB-Tooltip-listText\">{{{ value }}}</h4>\n      </li>\n    {{/fields}}\n  </ul>\n</div>\n",
+                    "alternative_names": {},
+                    "maxHeight": 180
+                },
+                "legend": {
+                    "type": "none",
+                    "show_title": false,
+                    "title": "",
+                    "template": "",
+                    "visible": true
+                },
+                "order": 1,
+                "visible": true,
+                "options": {
+                    "layer_name": "ne_10m_admin_0_countries_1",
+                    "cartocss": "/** simple visualization */\n\n#ne_10m_admin_0_countries_1{\n  polygon-fill: #000000;\n  polygon-opacity: 0.35;\n  line-color: #1b2432;\n  line-width: 1;\n  line-opacity: 1;\n}",
+                    "cartocss_version": "2.1.1",
+                    "interactivity": "cartodb_id",
+                    "sql": "select * from ne_10m_admin_0_countries_1"
+                }
             },
             {
                 "id": "e487cc62-45a0-4cbe-860c-2c6a14752755",
@@ -102,7 +130,7 @@
                     "sql_api_endpoint": "/api/v2/sql",
                     "sql_api_port": 80,
                     "layer_name": "final_champions_2016",
-                    "cartocss": '/** torque_cat visualization ;*/\n\n@category1: #FFFFFF;\n@category2: #FFFFFF;\n@category3: #229A00; /* cristiano */\n@category4: #F11810; /* bale */\n@category9: #3E7BB6; /* benzema */\n\n\n@category5: #FFCC00; /* james */\n@category6: #F84F40; /* sergio ramos */\n@category7: #643173; /* keylor navas */\n@category8: #fffd98; /* marcelo */\n@category10: #89ce94; /* pepe */\n@category11: #9fb4c7; /* modric */\n@category12: #f0b7b3; /* kross */\n@category13: #8c271e; /* lucas vazquez */\n\nMap {\n-torque-frame-count:1024;\n-torque-animation-duration:30;\n-torque-time-attribute:\"postedtime\";\n-torque-aggregation-function:\"CDB_Math_Mode(category_name)\";\n-torque-resolution:8;\n-torque-data-aggregation:linear;\n}\n\n#final_champions_2016{\n comp-op: screen;\n marker-fill-opacity: 0.2;\n marker-line-opacity: 0;\n marker-type: ellipse;\n marker-width: 3;\n [value=1] {\n  marker-fill: @category1;\n  }\n [value=2] {\n  marker-fill: @category2;\n  }\n [value=3] {\n  marker-fill: @category3;\n  }\n [value=4] {\n  marker-fill: @category4;\n  }\n [value=5] {\n  marker-fill: @category5;\n  }\n [value=6] {\n  marker-fill: @category6;\n  }\n [value=7] {\n  marker-fill: @category7;\n  }\n [value=8] {\n  marker-fill: @category8;\n  }\n [value=9] {\n  marker-fill: @category9;\n  }  \n [value=10] {\n  marker-fill: @category10;\n  }  \n [value=11] {\n  marker-fill: @category11;\n  }\n [value=12] {\n  marker-fill: @category12;\n  }\n [value=13] {\n  marker-fill: @category13;\n  }\n \n}\n\n\n#final_champions_2016[frame-offset=1] {\nmarker-width:4; \n marker-fill-opacity: 0.18;\n\n}\n#final_champions_2016[frame-offset=2] {\nmarker-width:4.5; \n marker-fill-opacity: 0.17;\n\n}\n#final_champions_2016[frame-offset=3] {\nmarker-width:5;\n marker-fill-opacity: 0.16;\n\n}\n#final_champions_2016[frame-offset=4] {\nmarker-width:5.5;\n marker-fill-opacity: 0.15;\n\n}\n#final_champions_2016[frame-offset=5] {\nmarker-width:6;\n marker-fill-opacity: 0.14;\n\n}\n\n#final_champions_2016[frame-offset=6] {\nmarker-width:6.5;\n marker-fill-opacity: 0.13;\n\n}\n#final_champions_2016[frame-offset=7] {\nmarker-width:7;\n marker-fill-opacity: 0.12;\n\n}\n#final_champions_2016[frame-offset=8] {\nmarker-width:7.5;\n marker-fill-opacity: 0.11;\n\n}\n#final_champions_2016[frame-offset=9] {\nmarker-width:8;\n marker-fill-opacity: 0.10;\n}\n\n\n#final_champions_2016::point{\n comp-op: screen;\n marker-fill-opacity: 1;\n marker-line-color: transparent;\n marker-type: ellipse;\n marker-fill: #0255a5 ;\n [value=1] {\n  marker-fill: @category1;\n  }\n [value=2] {\n  marker-fill: @category2;\n  }\n [value=3] {\n  marker-fill: @category3;\n  }\n [value=4] {\n  marker-fill: @category4;\n  }\n [value=5] {\n  marker-fill: @category5;\n  }\n [value=6] {\n  marker-fill: @category6;\n  }\n [value=7] {\n  marker-fill: @category7;\n  }\n [value=8] {\n  marker-fill: @category8;\n  }\n [value=9] {\n  marker-fill: @category9;\n  }  \n [value=10] {\n  marker-fill: @category10;\n  }  \n [value=11] {\n  marker-fill: @category11;\n  }\n [value=12] {\n  marker-fill: @category12;\n  }\n [value=13] {\n  marker-fill: @category13;\n  }\n \n}\n\n#final_champions_2016::point[frame-offset=1] {\nmarker-width:1.4;\nmarker-fill-opacity:0.4; \n}\n#final_champions_2016::point[frame-offset=2] {\nmarker-width:1.8;\nmarker-fill-opacity:0.35; \n}\n#final_champions_2016::point[frame-offset=3] {\nmarker-width:2.2;\nmarker-fill-opacity:0.30; \n}\n#final_champions2016::point[frame-offset=4] {\nmarker-width:2.4;\nmarker-fill-opacity:0.25; \n}\n#final_champions_2016::point[frame-offset=5] {\nmarker-width:2.6;\nmarker-fill-opacity:0.20; \n}\n#final_champions_2016::point[frame-offset=6] {\nmarker-width:2.8;\nmarker-fill-opacity:0.15; \n}\n#final_champions_2016::point[frame-offset=7] {\nmarker-width:3;\nmarker-fill-opacity:0.1; \n}\n\n\n\n',
+                    "cartocss": '@category1:#FFFFFF;@category2:#FFFFFF;@category3:#229A00;@category4:#F11810;@category9:#3E7BB6;@category5:#FFCC00;@category6:#F84F40;@category7:#643173;@category8:#fffd98;@category10:#89ce94;@category11:#9fb4c7;@category12:#f0b7b3;@category13:#8c271e;Map{-torque-frame-count:195;-torque-animation-duration:15;-torque-time-attribute:"postedtime";-torque-aggregation-function:"CDB_Math_Mode(category_name)";-torque-resolution:2;-torque-data-aggregation:linear;}#final_champions_2016{comp-op:overlay;marker-fill-opacity:0.7;marker-line-color:#FFF;marker-line-width:0;marker-line-opacity:1;marker-type:ellipse;marker-width:2;[value=1]{marker-fill:@category1;}[value=2]{marker-fill:@category2;}[value=3]{marker-fill:@category3;}[value=4]{marker-fill:@category4;}[value=5]{marker-fill:@category5;}[value=6]{marker-fill:@category6;}[value=7]{marker-fill:@category7;}[value=8]{marker-fill:@category8;}[value=9]{marker-fill:@category9;}[value=10]{marker-fill:@category10;}[value=11]{marker-fill:@category11;}[value=12]{marker-fill:@category12;}[value=13]{marker-fill:@category13;}}#final_champions_2016[frame-offset=1]{marker-width:4;marker-fill-opacity:0.2;}#final_champions_2016[frame-offset=2]{marker-width:6;marker-fill-opacity:0.1;}#final_champions_2016[frame-offset=3]{marker-width:12;marker-fill-opacity:0.05;}#final_champions_2016[frame-offset=4]{marker-width:14;marker-fill-opacity:0.04;}#final_champions_2016[frame-offset=5]{marker-width:16;marker-fill-opacity:0.03;}#final_champions_2016[frame-offset=6]{marker-width:18;marker-fill-opacity:0.02;}',
                     "sql": "select *, (CASE WHEN \"category_name\" = 3 THEN 'Cristiano' WHEN \"category_name\" = 4 THEN 'Bale' WHEN \"category_name\" = 5 THEN 'James' WHEN \"category_name\" = 6 THEN 'Ramos' WHEN \"category_name\" = 7 THEN 'Navas' WHEN \"category_name\" = 8 THEN 'Marcelo' WHEN \"category_name\" = 9 THEN 'Benzema' WHEN \"category_name\" = 10 THEN 'Pepe' WHEN \"category_name\" = 11 THEN 'Modric' WHEN \"category_name\" = 12 THEN 'Kroos' WHEN \"category_name\" = 13 THEN 'Otros' END) as jugador, (CASE WHEN \"category_name\" = 1 THEN 1 WHEN \"category_name\" = 2 THEN 2 WHEN \"category_name\" = 3 THEN 3 WHEN \"category_name\" = 4 THEN 4 WHEN \"category_name\" = 5 THEN 5 WHEN \"category_name\" = 6 THEN 6 WHEN \"category_name\" = 7 THEN 7 WHEN \"category_name\" = 8 THEN 8 WHEN \"category_name\" = 9 THEN 9 WHEN \"category_name\" = 10 THEN 10 WHEN \"category_name\" = 11 THEN 11 WHEN \"category_name\" = 12 THEN 12 WHEN \"category_name\" = 13 THEN 13 END) as torque_category FROM (SELECT * FROM final_champions_2016 WHERE \"category_name\" >= 3) _cdb_wrap",
                     "visible": true,
                     "table_name": "final_champions_2016",
