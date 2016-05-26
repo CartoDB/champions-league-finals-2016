@@ -34,29 +34,7 @@ body {
 }
 */
 
-.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:first-child .is-disabled .CDB-Widget-progressState {
-    background: #eee !important;
-}
 
-.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(2) .is-disabled .CDB-Widget-progressState {
-    background: #eee !important;
-}
-
-.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(3) .is-disabled .CDB-Widget-progressState {
-    background: #eee !important;
-}
-
-.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:first-child .CDB-Size-medium {
-    font-size: 12px !important;
-}
-
-.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(2) .CDB-Size-medium {
-    font-size: 12px !important;
-}
-
-.CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:nth-child(3) .CDB-Size-medium {
-    font-size: 12px !important;
-}
 
 .CDB-Dashboard-menuLogo {
     background-image: url(../img/champions.png);
@@ -328,4 +306,97 @@ image.CDB-Annotation {
 .CDB-Widget-info dt, .CDB-Widget-info dd{
     display: none;
 }
+
+
+@media (max-width: 600px) {
+    .CDB-Dashboard-belowMap .CDB-Widget {
+        min-height: 44px;
+        height: 44px;
+        padding: 8px;
+    }
+    .CDB-Widget-body--timeSeries {
+        display: flex; 
+        justify-content: center;
+    }
+    .CDB-Widget-header--timeSeries {
+        width: 110px;
+        margin: 0;
+    }
+    .CDB-Widget-content.CDB-Widget-content--timeSeries {
+        flex: 1;
+        margin: 0 !important;
+    }
+    .CDB-Widget-timeSeriesTimeInfo .CDB-Widget-textBig {
+        font-size: 9px;
+    }
+    .CDB-Widget-timeSeriesTimeInfo {
+        margin-left: 8px;
+    }
+    .CDB-Widget-canvasInner {
+        flex-direction: column;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget {
+        width: 100%;
+        min-width: 100%;
+        border: 0px;
+        border-bottom: 2px solid #f9f9f9;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:first-child {
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:first-child .CDB-Widget-body {
+        display: flex;
+        align-items: center;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:first-child .CDB-Widget-body .CDB-Widget-title {
+        margin: 0;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:first-child .CDB-Widget-body .CDB-Widget-tag {
+        display: none;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:first-child .CDB-Widget-body .CDB-Widget-content {
+        margin: 0;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:first-child .CDB-Widget-body .CDB-Widget-textBig {
+        font-size: 10px;
+        line-height: 12px;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:first-child .CDB-Widget-body .CDB-Widget-textBigger {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-filter .CDB-Widget-textSmaller--bold {
+        font-weight: 400;
+    }
+
+    .CDB-Widget-listGroup {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .CDB-Widget-listItem {
+        flex: 0 0 50%;
+    }
+    .CDB-Widget-canvas {
+        height: auto;
+        min-height: auto;
+    }
+    .CDB-Dashboard-mapWrapper--withMenu {
+        margin-top: 0;
+    }
+    .CDB-Dashboard-menuHeaderMobile {
+        background-color: transparent;
+        background-color: transparent;
+        height: auto;
+        padding: 18px;
+    }
+    .CDB-Dashboard-menuHeaderMobile .CDB-Dashboard-menuLogo {
+        display: none;
+    }
+    .CDB-Dashboard-menuHeaderMobile .CDB-Dashboard-menuMedia {
+        display: none;
+    }
+
+
+} 
+
+
 
