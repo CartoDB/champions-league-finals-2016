@@ -9,4 +9,4 @@ oauth2
 powertrack
 pyrestcli
 requests
-
+*.zip

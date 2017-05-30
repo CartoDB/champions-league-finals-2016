@@ -12,7 +12,7 @@ from carto.sql import SQLClient
 import logging
 
 logging.basicConfig(
-        level='DEBUG',
+        level='INFO',
         format=' %(asctime)s - %(levelname)s - %(message)s',
         datefmt='%I:%M:%S %p')
 
@@ -188,27 +188,28 @@ def lambda_handler(event, context):
 		# 2) Append new data from temp table to master table
 
 		try:
-			logger.info("Inserting new tweets in master table")
-			query = '''
-INSERT INTO {table_name} (actor_displayname,actor_followerscount,actor_friendscount,
-actor_id,actor_image,actor_listedcount,actor_location, actor_postedtime,actor_preferredusername,
-actor_statusescount,actor_summary,actor_utcoffset, actor_verified,body,category_name,
-category_number,favoritescount,geo, inreplyto_link,link,location_geo,location_name,
-object_type, postedtime,retweetcount,the_geom,twitter_entities, twitter_lang,cartodb_id)
-SELECT actor_displayname,actor_followerscount,actor_friendscount, actor_id,
-actor_image,actor_listedcount,actor_location, actor_postedtime,actor_preferredusername,
-actor_statusescount,actor_summary,actor_utcoffset, actor_verified,body,category_name,
-category_number,favoritescount,geo, inreplyto_link,link,location_geo,location_name,
-object_type, postedtime,retweetcount,the_geom,twitter_entities, twitter_lang,
-nextval('{table_name}_cartodb_id_seq_0') as cartodb_id
-FROM {tmp_table_name}'''.format(table_name=TABLE_NAME, tmp_table_name=tmp_table_name)
-			logger.debug('Inserting into...\r\n{}'.format(query))
-			insert_into = sql_client.send(query)
-		except Exception as e:
-			logger.error("Data couldn't be appended to master table", e)
-			return {'message': 'Data couldn\'t be appended to master table in subsequent tweet table INSERT; log table not updated',
-					'error': e }
-		else:
+			# Check if table has rows to insert
+			logger.info("Checking if the new table has rows")
+			tmp_table_rows = sql_client.send("select count(*) from {}".format(tmp_table_name))
+
+			if 'rows' in tmp_table_rows and len(tmp_table_rows['rows']) == 1 and tmp_table_rows['rows'][0]['count'] > 0:
+				logger.info("Inserting {} new tweets in master table".format(tmp_table_rows['rows'][0]['count']))
+				# Move the data into the master table
+				query = '''
+				INSERT INTO {table_name} (actor_displayname,actor_followerscount,actor_friendscount,
+				actor_id,actor_image,actor_listedcount,actor_location, actor_postedtime,actor_preferredusername,
+				actor_statusescount,actor_summary,actor_utcoffset, actor_verified,body,category_name,
+				category_number,favoritescount,geo, inreplyto_link,link,location_geo,location_name,
+				object_type, postedtime,retweetcount,the_geom,twitter_entities, twitter_lang,cartodb_id)
+				SELECT actor_displayname,actor_followerscount,actor_friendscount, actor_id,
+				actor_image,actor_listedcount,actor_location, actor_postedtime,actor_preferredusername,
+				actor_statusescount,actor_summary,actor_utcoffset, actor_verified,body,category_name,
+				category_number,favoritescount,geo, inreplyto_link,link,location_geo,location_name,
+				object_type, postedtime,retweetcount,the_geom,twitter_entities, twitter_lang,
+				nextval('{table_name}_cartodb_id_seq_0') as cartodb_id
+				FROM {tmp_table_name}'''.format(table_name=TABLE_NAME, tmp_table_name=tmp_table_name)
+				insert_into = sql_client.send(query)
+
 			# save last timestamp
 			pg_timestamp = end_timestamp.strftime("%Y%m%d%H%M%S")
 			logger.info("Writing metadata into log table")
@@ -217,6 +218,10 @@ FROM {tmp_table_name}'''.format(table_name=TABLE_NAME, tmp_table_name=tmp_table_
 					state=state,
 					table_name=TABLE_NAME,
 					pg_timestamp=pg_timestamp))
+		except Exception as e:
+			logger.error("Data couldn't be appended to master table:\r\n{}".format(e))
+			return {'message': 'Data couldn\'t be appended to master table in subsequent tweet table INSERT; log table not updated',
+						'error': e }
 
 		# 3) Delete temporary table
 		try:
