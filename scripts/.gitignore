@@ -1,0 +1,12 @@
+*.conf
+carto
+requests
+dateutil
+env
+future
+httplib2
+oauth2
+powertrack
+pyrestcli
+requests
+

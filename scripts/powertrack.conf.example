@@ -1,0 +1,9 @@
+[credentials]
+account_name=your_gnip_user
+username=your_gnip_email
+password=your_gnip_password
+label=your_gnip_label
+
+[output]
+folder=/tmp/
+num_threads=30
