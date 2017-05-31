@@ -5,6 +5,7 @@ base_api_endpoint=https://carto_user.carto.com/
 organization=your_org
 import_api_endpoint=https://carto_user.carto.com/api/v1/imports/
 table_name=champions_17
+sequence_name=champions_17_cartodb_id_seq
 log_table_name=champions_17_log
 
 [intervals]

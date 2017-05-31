@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import random
 import string
 import ConfigParser
@@ -24,7 +26,7 @@ logger = logging.getLogger('lambda_handler')
 def lambda_handler(event, context):
 	logger.info("Reading config")
 	config = ConfigParser.RawConfigParser()
-	config.read("jsanzcdb.conf")
+	config.read("realmadrid.conf")
 
 	IMPORT_API_ENDPOINT = config.get('cartodb', 'import_api_endpoint')
 	ACCOUNT_NAME = config.get('cartodb', 'account_name')
@@ -35,13 +37,39 @@ def lambda_handler(event, context):
 	LOG_TABLE_NAME = config.get('cartodb', 'log_table_name')
 	RUN_AFTER_S = config.get('intervals', 'run_after_s')
 	CLEAN_OLDER_THAN_D = config.get('intervals', 'clean_older_than_d')
+	SEQUENCE = config.get('cartodb', 'sequence_name')
 
 
 	cl = APIKeyAuthClient(base_url=API_URL, api_key=API_KEY, organization=ORGANIZATION)
 
 	categories = {
-		'#aporla12'        : ['#aporla12'],
-		'Cristiano Ronaldo': ['@Cristiano']
+		'Real Madrid'       : ["#HalaMadrid", "#RMUCL", "#RMFans", "#RMCity", "#RmHistory", "@realmadrid", "@realmadriden", "@readmadridfra", "@realmadridarab", "@realmadridjapan"],
+		'A por la 12'       : ["#aporla12", "#aporladuodecima", u'#aporladuodécima'.encode('utf-8').strip() ],
+		'Cristiano Ronaldo' : ["@Cristiano", "Cristiano"],
+		'Gareth Bale'       : ["@GarethBale11", "Bale"],
+		'James Rodríguez'   : ["@jamesdrodriguez", u"James Rodríguez".encode('utf-8').strip(), "James Rodriguez"],
+		'Sergio Ramos'      : ["@SergioRamos", "Sergio Ramos"],
+		'Keylor Navas'      : ["@NavasKeylor", "Keylor Navas"],
+		'Marcelo'           : ["@MarceloM12", "Marcelo"],
+		'Benzema'           : ["@Benzema", "Benzema"],
+		'Pepe'              : ["@officialpepe", "Pepe"],
+		'Modric'            : ["@lm19official", "Modric"],
+		'Kroos'             : ["@ToniKroos", "Kroos"],
+		'Kiko Casilla'      : ["@KikoCasilla13", "Kiko Casilla"],
+		'Rubén Yáñez'       : ["@RYanez93", "Rubén Yáñez"],
+		'Carvajal'          : ["@DaniCarvajal92", "Carvajal"],
+		'Nacho Fernández'   : ["@nachofi1990", "Nacho Fernández"],
+		'Varane'            : ["@raphaelvarane", "Varane"],
+		'Coentrao'          : ["@Fabio_Coentrao", "Coentrao"],
+		'Danilo Luiz'       : ["@2DaniLuiz", "Danilo Luiz"],
+		'Casemiro'          : ["@Casemiro", "Casemiro"],
+		'Kovacic'           : ["@MateoKova16", "Kovacic"],
+		'Asensio'           : ["@MarcoAsensio10", "Asensio"],
+		'Isco'              : ["@isco_alarcon", "Isco"],
+		'Lucas Vázquez'     : ["@Lucasvazquez91", "Lucas Vázquez"],
+		'Mariano Díaz'      : ["@marianodiaz9", "Mariano Díaz"],
+		'Morata'            : ["@AlvaroMorata", "Morata"],
+		'Zidane'            : ["@ZizouTheManager", "Zidane"]
 	}
 
 	sql_client = SQLClient(cl)
@@ -206,8 +234,8 @@ def lambda_handler(event, context):
 				actor_statusescount,actor_summary,actor_utcoffset, actor_verified,body,category_name,
 				category_number,favoritescount,geo, inreplyto_link,link,location_geo,location_name,
 				object_type, postedtime,retweetcount,the_geom,twitter_entities, twitter_lang,
-				nextval('{table_name}_cartodb_id_seq_0') as cartodb_id
-				FROM {tmp_table_name}'''.format(table_name=TABLE_NAME, tmp_table_name=tmp_table_name)
+				nextval('{sequence}') as cartodb_id
+				FROM {tmp_table_name}'''.format(table_name=TABLE_NAME, tmp_table_name=tmp_table_name, sequence=SEQUENCE)
 				insert_into = sql_client.send(query)
 
 			# save last timestamp
