@@ -110,7 +110,7 @@
                     "cartocss": "/** simple visualization */\n\n#ne_10m_admin_0_countries_1{\n  polygon-fill: #000000;\n  polygon-opacity: 0.35;\n  line-color: #1b2432;\n  line-width: 1;\n  line-opacity: 1;\n}",
                     "cartocss_version": "2.1.1",
                     "interactivity": "cartodb_id",
-                    "sql": "select * from ne_10m_admin_0_countries_1"
+                    "sql": "select cartodb_id, the_geom_webmercator from ne_10m_admin_0_countries_1"
                 }
             },
             {
