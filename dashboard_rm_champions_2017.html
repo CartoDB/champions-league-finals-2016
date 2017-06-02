@@ -6,8 +6,10 @@
     <title>Final Champions League 2017</title>
     <link href="http://carto.com/favicon.ico" rel="shortcut icon" />
     <meta name=viewport content="width=device-width initial-scale=1">
-    <link rel="stylesheet" href="dist-2017/themes/css/deep-insights.css" />
-    <script src="dist-2017/deep-insights.uncompressed.js"></script>
+
+    <link rel="stylesheet" href="./dist-2017/themes/css/deep-insights.css" />
+    <link rel="stylesheet" href="./css/champions_no_blue_bar.css" />
+    <script src="./dist-2017/deep-insights.uncompressed.js"></script>
     <style type="text/css">
       html, body {
         position:relative;
@@ -41,7 +43,7 @@
             "maps_api_template": "https://{user}.carto.com:443",
             "stat_tag": "ca2d8bb8-4603-11e7-b82b-0e3ff518bd15"
           },
-          "description": "<p>Real Madrid vs. Juventus. Powered by CARTO.</p>\n",
+          "description": null,
           "options": {
             "legends": true,
             "scrollwheel": true,
@@ -125,11 +127,12 @@
                 "attribution": "",
                 "layer_name": "Champions 2017 #APorLa12"
               },
-              "cartocss": "Map {\n  -torque-frame-count: 128;\n  -torque-animation-duration: 20;\n  -torque-time-attribute: \"postedtime\";\n  -torque-aggregation-function: \"CDB_Math_Mode(value)\";\n  -torque-resolution: 6;\n  -torque-data-aggregation: linear;\n}\n#layer {\n  marker-width: 3;\n  marker-fill: ramp([value], (#5F4690, #e12121, #666666, #ffffff, #73AF48, #666666, #666666, #666666, #666666, #5e9ee7, #666666), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), \"=\");\n  marker-fill-opacity: 1;\n  marker-line-width: 0;\n  marker-line-color: #FFF;\n  marker-line-opacity: 1;\n  comp-op: lighter;\n}\n#layer[frame-offset=1] {\n  marker-width: 6;\n  marker-fill-opacity: 0.5;\n}\n#layer[frame-offset=2] {\n  marker-width: 9;\n  marker-fill-opacity: 0.25;\n}\n#layer[frame-offset=3] {\n  marker-width: 12;\n  marker-fill-opacity: 0.16666666666666666;\n}\n#layer[frame-offset=4] {\n  marker-width: 17;\n  marker-fill-opacity: 0.125;\n}",
+              'cartocss': 'Map { -torque-frame-count: 128; -torque-animation-duration: 20; -torque-time-attribute: "postedtime"; -torque-aggregation-function: "CDB_Math_Mode(value)"; -torque-resolution: 6; -torque-data-aggregation: linear; } #layer { marker-width: 3; marker-fill: ramp([value], (#5F4690, #e12121, #666666, #ffffff, #73AF48, #666666, #666666, #666666, #666666, #5e9ee7, #666666), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), "="); marker-fill-opacity: 1; marker-line-width: 0; marker-line-color: #FFF; marker-line-opacity: 1; comp-op: lighter; } #layer[frame-offset=1] { marker-width: 6; marker-fill-opacity: 0.5; } #layer[frame-offset=2] { marker-width: 9; marker-fill-opacity: 0.25; } #layer[frame-offset=3] { marker-width: 12; marker-fill-opacity: 0.16666666666666666; } #layer[frame-offset=4] { marker-width: 17; marker-fill-opacity: 0.125; }',
               "cartocss_version": "2.1.1",
-              "sql": "SELECT * FROM realmadridweb.champions_17",
+              "sql": "SELECT cartodb_id, the_geom_webmercator, category_name, postedtime FROM realmadridweb.champions_17",
               "source": "a0",
-              "sql_wrap": "select *, (CASE WHEN \"category_name\" = 'Marcelo' THEN 1 WHEN \"category_name\" = 'Cristiano Ronaldo' THEN 2 WHEN \"category_name\" = 'Pepe' THEN 3 WHEN \"category_name\" = 'Real Madrid' THEN 4 WHEN \"category_name\" = 'Gareth Bale' THEN 5 WHEN \"category_name\" = 'Isco' THEN 6 WHEN \"category_name\" = 'Zidane' THEN 7 WHEN \"category_name\" = '' THEN 8 WHEN \"category_name\" = 'Morata' THEN 9 WHEN \"category_name\" = 'Benzema' THEN 10  ELSE 11  END) as value FROM (<%= sql %>) __wrapped"
+              "sql_wrap": "select cartodb_id, the_geom_webmercator, category_name, postedtime, (CASE WHEN \"category_name\" = 'Marcelo' THEN 1 WHEN \"category_name\" = 'Cristiano Ronaldo' THEN 2 WHEN \"category_name\" = 'Pepe' THEN 3 WHEN \"category_name\" = 'Real Madrid' THEN 4 WHEN \"category_name\" = 'Gareth Bale' THEN 5 WHEN \"category_name\" = 'Isco' THEN 6 WHEN \"category_name\" = 'Zidane' THEN 7 WHEN \"category_name\" = '' THEN 8 WHEN \"category_name\" = 'Morata' THEN 9 WHEN \"category_name\" = 'Benzema' THEN 10  ELSE 11  END) as value FROM (<%= sql %>) __wrapped"
+
             }
           ],
           "likes": 0,
@@ -321,13 +324,18 @@
           ],
           "vector": false
         }
-
-
+        var torqueLayer;
         cartodb.deepInsights.createDashboard('#dashboard', my_vizjson, {
           no_cdn: false,
           cartodb_logo: false,
           share_urls: true
-        });
+        },function(error, layers) {
+          torqueLayer = layers._dashboard.vis._layersCollection.getTorqueLayers()[0];
+          torqueLayer.pause();
+          torqueLayer.set("step", 0);
+        }
+      );
+
       }
     </script>
   </body>

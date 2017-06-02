@@ -20,6 +20,13 @@ body {
     overflow: hidden;
 }
 
+.CDB-Dashboard-menuInner {
+  display:none !important;
+}
+.CDB-Dashboard-mapWrapper--withMenu {
+  margin-left: 0;
+}
+
 /*
 .CDB-Widget-canvasInner .CDB-Widget:nth-child(2) .CDB-Widget-listItem:first-child .CDB-Widget-progressState {
     background: #1685cb !important;
