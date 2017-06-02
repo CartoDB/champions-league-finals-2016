@@ -6,6 +6,7 @@
     <title>Final Champions League 2017</title>
     <link href="http://carto.com/favicon.ico" rel="shortcut icon" />
     <meta name=viewport content="width=device-width initial-scale=1">
+
     <link rel="stylesheet" href="./dist-2017/themes/css/deep-insights.css" />
     <link rel="stylesheet" href="./css/champions_no_blue_bar.css" />
     <script src="./dist-2017/deep-insights.uncompressed.js"></script>
@@ -131,6 +132,7 @@
               "sql": "SELECT cartodb_id, the_geom_webmercator, category_name, postedtime FROM realmadridweb.champions_17",
               "source": "a0",
               "sql_wrap": "select cartodb_id, the_geom_webmercator, category_name, postedtime, (CASE WHEN \"category_name\" = 'Marcelo' THEN 1 WHEN \"category_name\" = 'Cristiano Ronaldo' THEN 2 WHEN \"category_name\" = 'Pepe' THEN 3 WHEN \"category_name\" = 'Real Madrid' THEN 4 WHEN \"category_name\" = 'Gareth Bale' THEN 5 WHEN \"category_name\" = 'Isco' THEN 6 WHEN \"category_name\" = 'Zidane' THEN 7 WHEN \"category_name\" = '' THEN 8 WHEN \"category_name\" = 'Morata' THEN 9 WHEN \"category_name\" = 'Benzema' THEN 10  ELSE 11  END) as value FROM (<%= sql %>) __wrapped"
+
             }
           ],
           "likes": 0,
@@ -325,7 +327,6 @@
         var torqueLayer;
         cartodb.deepInsights.createDashboard('#dashboard', my_vizjson, {
           no_cdn: false,
-          scrollwheel: true,
           cartodb_logo: false,
           share_urls: true
         },function(error, layers) {
@@ -334,9 +335,6 @@
           torqueLayer.set("step", 0);
         }
       );
-
-
-
 
       }
     </script>
