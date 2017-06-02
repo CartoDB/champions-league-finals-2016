@@ -6,7 +6,6 @@
     <title>Final Champions League 2017</title>
     <link href="http://carto.com/favicon.ico" rel="shortcut icon" />
     <meta name=viewport content="width=device-width initial-scale=1">
-
     <link rel="stylesheet" href="./dist-2017/themes/css/deep-insights.css" />
     <link rel="stylesheet" href="./css/champions_no_blue_bar.css" />
     <script src="./dist-2017/deep-insights.uncompressed.js"></script>
@@ -46,7 +45,7 @@
           "description": null,
           "options": {
             "legends": true,
-            "scrollwheel": true,
+            "scrollwheel": false,
             "layer_selector": false,
             "dashboard_menu": false
           },
@@ -81,32 +80,32 @@
                       "title"
                     ]
                   },
-                  "created_at": "2017-05-31T15:12:24+00:00",
+                  "created_at": "2017-06-02T14:56:06+00:00",
                   "definition": {
                     "categories": [
                       {
                         "title": "Real Madrid",
-                        "color": "#ffffff"
+                        "color": "#7b48be"
                       },
                       {
-                        "title": "Cristiano Ronaldo",
-                        "color": "#e12121"
+                        "title": "#APorLa12",
+                        "color": "#ffcc00"
                       },
                       {
-                        "title": "Marcelo",
-                        "color": "#5F4690"
-                      },
-                      {
-                        "title": "Gareth Bale",
-                        "color": "#73AF48"
+                        "title": "Ronaldo",
+                        "color": "#55a502"
                       },
                       {
                         "title": "Benzema",
-                        "color": "#5e9ee7"
+                        "color": "#037cf1"
+                      },
+                      {
+                        "title": "Ramos",
+                        "color": "#ee324e"
                       },
                       {
                         "title": "Otros jugadores",
-                        "color": "#666666"
+                        "color": "#ffffff"
                       }
                     ]
                   },
@@ -127,13 +126,10 @@
                 "attribution": "",
                 "layer_name": "Champions 2017 #APorLa12"
               },
-              'cartocss': 'Map { -torque-frame-count: 128; -torque-animation-duration: 20; -torque-time-attribute: "postedtime"; -torque-aggregation-function: "CDB_Math_Mode(value)"; -torque-resolution: 6; -torque-data-aggregation: linear; } #layer { marker-width: 3; marker-fill: ramp([value], (#5F4690, #e12121, #666666, #ffffff, #73AF48, #666666, #666666, #666666, #666666, #5e9ee7, #666666), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), "="); marker-fill-opacity: 1; marker-line-width: 0; marker-line-color: #FFF; marker-line-opacity: 1; comp-op: lighter; } #layer[frame-offset=1] { marker-width: 6; marker-fill-opacity: 0.5; } #layer[frame-offset=2] { marker-width: 9; marker-fill-opacity: 0.25; } #layer[frame-offset=3] { marker-width: 12; marker-fill-opacity: 0.16666666666666666; } #layer[frame-offset=4] { marker-width: 17; marker-fill-opacity: 0.125; }',
-              "cartocss_version": "2.1.1",
+              "cartocss": 'Map{-torque-frame-count:128;-torque-animation-duration:30;-torque-time-attribute:"postedtime";-torque-aggregation-function:"CDB_Math_Mode(value)";-torque-resolution:2;-torque-data-aggregation:linear}#layer{marker-fill:ramp([value],(#fff,#7b48be,#55a502,#037cf1,#ee324e,#fc0),(1,2,3,4,5,6),"=");comp-op:src-over;marker-fill-opacity:.6;marker-line-color:#FFF;marker-line-width:0;marker-line-opacity:1;marker-type:ellipse;marker-width:2}#layer[frame-offset=1]{marker-width:4;marker-fill-opacity:.16}#layer[frame-offset=2]{marker-width:5;marker-fill-opacity:.08}#layer[frame-offset=3]{marker-width:6;marker-fill-opacity:.05}#layer[frame-offset=4]{marker-width:7;marker-fill-opacity:.02}',
               "sql": "SELECT cartodb_id, the_geom_webmercator, category_name, postedtime FROM realmadridweb.champions_17",
               "source": "a0",
-              "sql_wrap": "select cartodb_id, the_geom_webmercator, category_name, postedtime, (CASE WHEN \"category_name\" = 'Marcelo' THEN 1 WHEN \"category_name\" = 'Cristiano Ronaldo' THEN 2 WHEN \"category_name\" = 'Pepe' THEN 3 WHEN \"category_name\" = 'Real Madrid' THEN 4 WHEN \"category_name\" = 'Gareth Bale' THEN 5 WHEN \"category_name\" = 'Isco' THEN 6 WHEN \"category_name\" = 'Zidane' THEN 7 WHEN \"category_name\" = '' THEN 8 WHEN \"category_name\" = 'Morata' THEN 9 WHEN \"category_name\" = 'Benzema' THEN 10  ELSE 11  END) as value FROM (<%= sql %>) __wrapped"
-
-            }
+              "sql_wrap": "select *, (CASE WHEN \"tweet\" = 'Otros jugadores' THEN 1 WHEN \"tweet\" = 'Real Madrid' THEN 2 WHEN \"tweet\" = 'Ronaldo' THEN 3 WHEN \"tweet\" = 'Benzema' THEN 4 WHEN \"tweet\" = 'Ramos' THEN 5 WHEN \"tweet\" = '#APorLa12' THEN 6  END) as value FROM (<%= sql %>) __wrapped"            }
           ],
           "likes": 0,
           "map_provider": "leaflet",
@@ -198,7 +194,7 @@
                 "widget_style": {
                   "definition": {
                     "color": {
-                      "fixed": "#4119b1",
+                      "fixed": "#7b48be",
                       "opacity": 1
                     }
                   }
@@ -314,8 +310,7 @@
               "id": "a0",
               "type": "source",
               "params": {
-                "query": "SELECT cartodb_id, the_geom_webmercator, postedtime, category_name FROM realmadridweb.champions_17"
-              },
+              "query": "SELECT \n\tcartodb_id,\n    the_geom_webmercator,\n    postedtime,\n    category_name,\n    CASE WHEN category_name ilike 'Real Madrid'\n    \t THEN 'Real Madrid'\n         WHEN category_name ilike 'a por la 12'\n         THEN '#APorLa12'\n         WHEN category_name ilike 'Cristiano%'\n         THEN 'Ronaldo'\n         WHEN category_name ilike 'Benzema'\n         THEN 'Benzema'\n         WHEN category_name ilike 'Sergio%'\n         THEN 'Ramos'\n         ELSE 'Otros jugadores'\n    END as tweet\nFROM realmadridweb.champions_17\nORDER BY tweet ASC"              },
               "options": {
                 "table_name": "realmadridweb.champions_17",
                 "simple_geom": "point"
@@ -327,6 +322,7 @@
         var torqueLayer;
         cartodb.deepInsights.createDashboard('#dashboard', my_vizjson, {
           no_cdn: false,
+          scrollwheel: true,
           cartodb_logo: false,
           share_urls: true
         },function(error, layers) {
@@ -335,6 +331,9 @@
           torqueLayer.set("step", 0);
         }
       );
+
+
+
 
       }
     </script>
