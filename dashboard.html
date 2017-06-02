@@ -1,20 +1,337 @@
 <!DOCTYPE html>
+<!--  This dashboard has been made with the lastest version of deepinsights.js at 2017/6/1-->
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Final Champions League 2016</title>
-    <link href="http://cartodb.com/favicon.ico" rel="shortcut icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./dist/themes/css/deep-insights.css" rel="stylesheet" />
-    <link href="./css/champions.css" rel="stylesheet" />
-    <script src="./dist/deep-insights.uncompressed.js"></script>
-    <script src="./js/champions_vis.js"></script>
-    <script src="./js/champions.js"></script>
-</head>
+    <link href="http://carto.com/favicon.ico" rel="shortcut icon" />
+    <meta name=viewport content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="dist-2017/themes/css/deep-insights.css" />
+    <link rel="stylesheet" href="./css/champions_no_blue_bar.css" />
+    <script src="dist-2017/deep-insights.uncompressed.js"></script>
+    <style type="text/css">
+      html, body {
+        position:relative;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dashboard"></div>
 
-<body>
-    <div class="Dashboard-canvas" id="dashboard"></div>
-</body>
+    <script>
+      window.onload = function() {
+        // viz.jsons aren't allowed as local files but can be declared as variables
 
+        var my_vizjson = {
+            "bounds": [
+              [
+                -38.2963,
+                -123.565
+              ],
+              [
+                61.209,
+                146.34
+              ]
+            ],
+            "center": "[11.45636,11.38745875]",
+            "datasource": {
+              "user_name": "realmadridweb",
+              "maps_api_template": "https://{user}.carto.com:443",
+              "stat_tag": "0488b496-d256-47d9-a97c-9893f4e3fa7c"
+            },
+            "description": "<p>Real Madrid vs. Juventus. Powered by CARTO.</p>\n",
+            "options": {
+              "legends": true,
+              "scrollwheel": true,
+              "layer_selector": false,
+              "dashboard_menu": false
+            },
+            "id": "0488b496-d256-47d9-a97c-9893f4e3fa7c",
+            "layers": [
+              {
+                "id": "b145310c-25c3-4b8c-895d-e7404465aa61",
+                "type": "tiled",
+                "options": {
+                  "type": "Tiled",
+                  "category": "CARTO",
+                  "urlTemplate": "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png",
+                  "subdomains": "abcd",
+                  "minZoom": "0",
+                  "maxZoom": "18",
+                  "name": "Dark matter (lite)",
+                  "className": "dark_matter_lite_rainbow",
+                  "attribution": "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+                  "selected": true,
+                  "val": "dark_matter_lite_rainbow",
+                  "label": "Dark matter (lite)",
+                  "default": false,
+                  "highlighted": true
+                }
+              },
+              {
+                "id": "6900acd2-b855-446a-8ab9-561a0dca374a",
+                "legends": [
+                  {
+                    "conf": {
+                      "columns": [
+                        "title"
+                      ]
+                    },
+                    "created_at": "2017-06-02T11:37:26+00:00",
+                    "definition": {
+                      "categories": [
+                        {
+                          "title": "Real Madrid",
+                          "color": "#ffffff"
+                        },
+                        {
+                          "title": "Cristiano",
+                          "color": "#229a00"
+                        },
+                        {
+                          "title": "Bale",
+                          "color": "#f11810"
+                        },
+                        {
+                          "title": "Benzema",
+                          "color": "#3e7bb6"
+                        },
+                        {
+                          "title": "James",
+                          "color": "#ffcc00"
+                        },
+                        {
+                          "title": "Ramos",
+                          "color": "#f84f40"
+                        },
+                        {
+                          "title": "Navas",
+                          "color": "#643173"
+                        },
+                        {
+                          "title": "Resto de jugadores",
+                          "color": "#8c271e"
+                        }
+                      ]
+                    },
+                    "id": "481e0ade-d7b3-4707-ac90-a2d1fc7f4a49",
+                    "layer_id": "6900acd2-b855-446a-8ab9-561a0dca374a",
+                    "post_html": "",
+                    "pre_html": "",
+                    "title": "",
+                    "type": "custom",
+                    "updated_at": "2017-06-02T12:58:22+00:00"
+                  }
+                ],
+                "type": "torque",
+                "options": {
+                  "visible": true,
+                  "table_name": "champions_17",
+                  "user_name": "realmadridweb",
+                  "attribution": "",
+                  "layer_name": "Champions 2016"
+                },
+                "cartocss": "@category1: #FFFFFF;\n@category2: #FFFFFF;\n@category3: #229A00;\n@category4: #F11810;\n@category9: #3E7BB6;\n@category5: #FFCC00;\n@category6: #F84F40;\n@category7: #643173;\n@category8: #fffd98;\n@category10: #89ce94;\n@category11: #9fb4c7;\n@category12: #f0b7b3;\n@category13: #8c271e;\nMap {\n    -torque-frame-count: 195;\n    -torque-animation-duration: 30;\n    -torque-time-attribute: \"postedtime\";\n    -torque-aggregation-function: \"CDB_Math_Mode(value)\";\n    -torque-resolution: 2;\n    -torque-data-aggregation: linear;\n}\n#final_champions_2016 {\n    comp-op: overlay;\n    marker-fill-opacity: 0.7;\n    marker-line-color: #FFF;\n    marker-line-width: 0;\n    marker-line-opacity: 1;\n    marker-type: ellipse;\n    marker-width: 2;\n    [value=1] {\n        marker-fill: @category1;\n    }\n    [value=2] {\n        marker-fill: @category2;\n    }\n    [value=3] {\n        marker-fill: @category3;\n    }\n    [value=4] {\n        marker-fill: @category4;\n    }\n    [value=5] {\n        marker-fill: @category5;\n    }\n    [value=6] {\n        marker-fill: @category6;\n    }\n    [value=7] {\n        marker-fill: @category7;\n    }\n    [value=8] {\n        marker-fill: @category8;\n    }\n    [value=9] {\n        marker-fill: @category9;\n    }\n    [value=10] {\n        marker-fill: @category10;\n    }\n    [value=11] {\n        marker-fill: @category11;\n    }\n    [value=12] {\n        marker-fill: @category12;\n    }\n    [value=13] {\n        marker-fill: @category13;\n    }\n}\n#final_champions_2016[frame-offset=1] {\n    marker-width: 4;\n    marker-fill-opacity: 0.2;\n}\n#final_champions_2016[frame-offset=2] {\n    marker-width: 6;\n    marker-fill-opacity: 0.1;\n}\n#final_champions_2016[frame-offset=3] {\n    marker-width: 12;\n    marker-fill-opacity: 0.05;\n}\n#final_champions_2016[frame-offset=4] {\n    marker-width: 14;\n    marker-fill-opacity: 0.04;\n}\n#final_champions_2016[frame-offset=5] {\n    marker-width: 16;\n    marker-fill-opacity: 0.03;\n}\n#final_champions_2016[frame-offset=6] {\n    marker-width: 18;\n    marker-fill-opacity: 0.02;\n}",
+                "cartocss_version": "2.1.1",
+                "sql": "SELECT * FROM realmadridweb.champions_17",
+                "source": "a0",
+                "sql_wrap": "select *, (CASE WHEN \"category_name\" = 'Real Madrid' THEN 1 WHEN \"category_name\" = 'Resto de jugadores' THEN 2 WHEN \"category_name\" = 'Cristiano' THEN 3 WHEN \"category_name\" = 'Ramos' THEN 4 WHEN \"category_name\" = 'Benzema' THEN 5 WHEN \"category_name\" = 'Bale' THEN 6 WHEN \"category_name\" = 'Navas' THEN 7 WHEN \"category_name\" = 'Kroos' THEN 8 WHEN \"category_name\" = 'James' THEN 9 WHEN \"category_name\" = 'Marcelo' THEN 10  ELSE 11  END) as value FROM (<%= sql %>) __wrapped"
+              }
+            ],
+            "likes": 0,
+            "map_provider": "leaflet",
+            "overlays": [
+              {
+                "type": "share",
+                "order": 1,
+                "options": {
+                  "display": true,
+                  "x": 20,
+                  "y": 20
+                },
+                "template": ""
+              },
+              {
+                "type": "zoom",
+                "order": 2,
+                "options": null,
+                "template": null
+              },
+              {
+                "type": "loader",
+                "order": 3,
+                "options": {
+                  "display": true,
+                  "x": 20,
+                  "y": 150
+                },
+                "template": "<div class=\"loader\" original-title=\"\"></div>"
+              }
+            ],
+            "title": "Final Champions League 2016",
+            "updated_at": "2017-06-02T12:58:45+00:00",
+            "user": {
+              "fullname": "realmadridweb",
+              "avatar_url": "https://s3.amazonaws.com/com.cartodb.users-assets.production/production/realmadridweb/assets/20170601092541real-madrid-icon.png",
+              "profile_url": "https://realmadrid.carto.com/u/realmadridweb"
+            },
+            "version": "3.0.0",
+            "widgets": [
+              {
+                "id": "283c8a3a-17f9-440c-aaad-0d829f720922",
+                "type": "category",
+                "title": "Tweets sobre...",
+                "order": 0,
+                "layer_id": "6900acd2-b855-446a-8ab9-561a0dca374a",
+                "options": {
+                  "column": "category_name",
+                  "sync_on_data_change": true,
+                  "sync_on_bbox_change": true,
+                  "aggregation": "count",
+                  "aggregation_column": "",
+                  "schema": {},
+                  "aggregate": {
+                    "attribute": "",
+                    "operator": "count"
+                  },
+                  "suffix": "",
+                  "prefix": ""
+                },
+                "style": {
+                  "widget_style": {
+                    "definition": {
+                      "color": {
+                        "fixed": "#4119b1",
+                        "opacity": 1
+                      }
+                    }
+                  },
+                  "auto_style": {
+                    "custom": true,
+                    "allowed": false,
+                    "definition": {
+                      "color": {
+                        "attribute": "category_name",
+                        "quantification": "category",
+                        "range": [
+                          "#5F4690",
+                          "#1D6996",
+                          "#38A6A5",
+                          "#0F8554",
+                          "#73AF48",
+                          "#EDAD08",
+                          "#E17C05",
+                          "#CC503E",
+                          "#94346E",
+                          "#6F4070",
+                          "#666666"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "source": {
+                  "id": "a0"
+                }
+              },
+              {
+                "id": "1ede06b3-0dd3-4bd7-9bef-019d61221a43",
+                "type": "formula",
+                "title": "Número de tweets",
+                "order": 1,
+                "layer_id": "6900acd2-b855-446a-8ab9-561a0dca374a",
+                "options": {
+                  "column": "cartodb_id",
+                  "operation": "count",
+                  "sync_on_data_change": true,
+                  "sync_on_bbox_change": true
+                },
+                "style": {
+                  "widget_style": {
+                    "definition": {
+                      "color": {
+                        "fixed": "#F2CC8F",
+                        "opacity": 1
+                      }
+                    }
+                  },
+                  "auto_style": {
+                    "custom": false,
+                    "allowed": false
+                  }
+                },
+                "source": {
+                  "id": "a0"
+                }
+              },
+              {
+                "id": "e1df22dd-c76c-4401-b965-2eed2b74a67a",
+                "type": "time-series",
+                "title": "time_date__t",
+                "order": 2,
+                "layer_id": "6900acd2-b855-446a-8ab9-561a0dca374a",
+                "options": {
+                  "column": "postedtime",
+                  "bins": 256,
+                  "animated": true,
+                  "sync_on_data_change": true,
+                  "sync_on_bbox_change": true
+                },
+                "style": {
+                  "widget_style": {
+                    "definition": {
+                      "color": {
+                        "fixed": "#F2CC8F",
+                        "opacity": 1
+                      }
+                    }
+                  },
+                  "auto_style": {
+                    "custom": false,
+                    "allowed": false
+                  }
+                },
+                "source": {
+                  "id": "a0"
+                }
+              }
+            ],
+            "zoom": 1,
+            "analyses": [
+              {
+                "id": "a0",
+                "type": "source",
+                "params": {
+                  "query": "SELECT\n\tcartodb_id,\n    the_geom_webmercator,\n    postedtime,\n    CASE WHEN category_name = 1 \n    \t THEN 'Real Madrid' \n         WHEN category_name = 2 \n         THEN 'Real Madrid' \n         WHEN category_name = 3 \n         THEN 'Cristiano' \n         WHEN category_name = 4 \n         THEN 'Bale' \n         WHEN category_name = 5 \n         THEN 'James' \n         WHEN category_name = 6 \n         THEN 'Ramos' \n         WHEN category_name = 7 \n         THEN 'Navas' \n         WHEN category_name = 8 \n         THEN 'Marcelo' \n         WHEN category_name = 9 \n         THEN 'Benzema' \n         WHEN category_name = 10 \n         THEN 'Pepe' \n         WHEN category_name = 11 \n         THEN 'Modric' \n         WHEN category_name = 12 \n         THEN 'Kroos' \n         WHEN category_name = 13 \n         THEN 'Resto de jugadores' \n    END as category_name\nFROM realmadridweb.final_champions_2016"
+                },
+                "options": {
+                  "table_name": "final_champions_2016",
+                  "simple_geom": "point"
+                }
+              }
+            ],
+            "vector": false
+          }
+          var torqueLayer;
+          cartodb.deepInsights.createDashboard('#dashboard', my_vizjson, {
+            no_cdn: false,
+            scrollwheel: true,
+            cartodb_logo: false,
+            share_urls: true
+          },function(error, layers) {
+            torqueLayer = layers._dashboard.vis._layersCollection.getTorqueLayers()[0];
+            torqueLayer.pause();
+            torqueLayer.set("step", 0);
+          }
+        );
+
+
+
+
+        }
+    </script>
+  </body>
 </html>
