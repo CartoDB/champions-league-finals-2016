@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!--  This dashboard has been made with the lastest version of deepinsights.js at 2017/6/1-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Final Champions League 2018</title>
+    <link href="http://carto.com/favicon.ico" rel="shortcut icon" />
+    <meta name=viewport content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="./dist-2017/themes/css/deep-insights.css" />
+    <link rel="stylesheet" href="./css/champions_no_blue_bar.css" />
+    <script src="./dist-2017/deep-insights.uncompressed.js"></script>
+    <style type="text/css">
+      html, body {
+        position:relative;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dashboard"></div>
+
+    <script>
+      window.onload = function() {
+        // viz.jsons aren't allowed as local files but can be declared as variables
+
+        var my_vizjson = {
+          "bounds": [
+            [
+              -38.2963,
+              -123.565
+            ],
+            [
+              61.209,
+              146.34
+            ]
+          ],
+          "center": "[11.45636,11.38745875]",
+          "datasource": {
+            "user_name": "realmadridweb",
+            "maps_api_template": "https://{user}.carto.com:443",
+            "stat_tag": "ca2d8bb8-4603-11e7-b82b-0e3ff518bd15"
+          },
+          "description": null,
+          "options": {
+            "legends": true,
+            "scrollwheel": false,
+            "layer_selector": false,
+            "dashboard_menu": false
+          },
+          "id": "ca2d8bb8-4603-11e7-b82b-0e3ff518bd15",
+          "layers": [
+            {
+              "id": "2ffe95db-088e-4311-bb8a-bd1fc5782d94",
+              "type": "tiled",
+              "options": {
+                "type": "Tiled",
+                "category": "CARTO",
+                "urlTemplate": "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png",
+                "subdomains": "abcd",
+                "minZoom": "2",
+                "maxZoom": "18",
+                "name": "Dark matter (lite)",
+                "className": "dark_matter_lite_rainbow",
+                "attribution": "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+                "selected": true,
+                "val": "dark_matter_lite_rainbow",
+                "label": "Dark matter (lite)",
+                "default": false,
+                "highlighted": true
+              }
+            },
+            {
+              "id": "bad5d98b-f862-4bea-bb6b-3db4a30cde75",
+              "legends": [
+                {
+                  "conf": {
+                    "columns": [
+                      "title"
+                    ]
+                  },
+                  "created_at": "2017-06-02T14:56:06+00:00",
+                  "definition": {
+                    "categories": [
+                      {
+                        "title": "Real Madrid",
+                        "color": "#7b48be"
+                      },
+                      {
+                        "title": "#APorLa13",
+                        "color": "#ffcc00"
+                      },
+                      {
+                        "title": "Ronaldo",
+                        "color": "#55a502"
+                      },
+                      {
+                        "title": "Benzema",
+                        "color": "#037cf1"
+                      },
+                      {
+                        "title": "Marcelo",
+                        "color": "#ee324e"
+                      },
+                      {
+                        "title": "Otros jugadores",
+                        "color": "#ffffff"
+                      }
+                    ]
+                  },
+                  "id": "7e9ca94a-abf9-4060-b720-822277bf06fa",
+                  "layer_id": "bad5d98b-f862-4bea-bb6b-3db4a30cde75",
+                  "post_html": "",
+                  "pre_html": "",
+                  "title": "",
+                  "type": "custom",
+                  "updated_at": "2017-06-01T09:35:15+00:00"
+                }
+              ],
+              "type": "torque",
+              "options": {
+                "visible": true,
+                "table_name": "champions_18",
+                "user_name": "realmadridweb",
+                "attribution": "",
+                "layer_name": "Champions 2018 #APorLa13"
+              },
+              "cartocss": 'Map{-torque-frame-count:128;-torque-animation-duration:30;-torque-time-attribute:"postedtime";-torque-aggregation-function:"CDB_Math_Mode(value)";-torque-resolution:2;-torque-data-aggregation:linear}#layer{marker-fill:ramp([value],(#fff,#7b48be,#55a502,#037cf1,#ee324e,#fc0),(1,2,3,4,5,6),"=");comp-op:src-over;marker-fill-opacity:.6;marker-line-color:#FFF;marker-line-width:0;marker-line-opacity:1;marker-type:ellipse;marker-width:2}#layer[frame-offset=1]{marker-width:4;marker-fill-opacity:.16}#layer[frame-offset=2]{marker-width:5;marker-fill-opacity:.08}#layer[frame-offset=3]{marker-width:6;marker-fill-opacity:.05}#layer[frame-offset=4]{marker-width:7;marker-fill-opacity:.02}',
+              "sql": "SELECT cartodb_id, the_geom_webmercator, category_name, postedtime FROM realmadridweb.champions_18",
+              "source": "a0",
+              "sql_wrap": "select *, (CASE WHEN \"tweet\" = 'Otros jugadores' THEN 1 WHEN \"tweet\" = 'Real Madrid' THEN 2 WHEN \"tweet\" = 'Ronaldo' THEN 3 WHEN \"tweet\" = 'Benzema' THEN 4 WHEN \"tweet\" = 'Marcelo' THEN 5 WHEN \"tweet\" = '#APorLa13' THEN 6  END) as value FROM (<%= sql %>) __wrapped"            }
+          ],
+          "likes": 0,
+          "map_provider": "leaflet",
+          "overlays": [
+            {
+              "type": "share",
+              "order": 2,
+              "options": {
+                "display": true,
+                "x": 20,
+                "y": 20
+              },
+              "template": ""
+            },
+            {
+              "type": "zoom",
+              "order": 6,
+              "options": null,
+              "template": null
+            },
+            {
+              "type": "loader",
+              "order": 8,
+              "options": {
+                "display": true,
+                "x": 20,
+                "y": 150
+              },
+              "template": "<div class=\"loader\" original-title=\"\"></div>"
+            }
+          ],
+          "title": "Final Champions League 2018",
+          "updated_at": "2017-06-01T10:18:55+00:00",
+          "user": {
+            "fullname": "realmadridweb",
+            "avatar_url": "https://s3.amazonaws.com/com.cartodb.users-assets.production/production/realmadridweb/assets/20170601092541real-madrid-icon.png",
+            "profile_url": "https://realmadrid.carto.com/u/realmadridweb"
+          },
+          "version": "3.0.0",
+          "widgets": [
+            {
+              "id": "34f909c7-183d-4455-8f54-ced326f6ced7",
+              "type": "category",
+              "title": "Tweets sobre...",
+              "order": 0,
+              "layer_id": "bad5d98b-f862-4bea-bb6b-3db4a30cde75",
+              "options": {
+                "column": "tweet",
+                "sync_on_data_change": true,
+                "sync_on_bbox_change": true,
+                "aggregation": "count",
+                "aggregation_column": "",
+                "schema": {},
+                "aggregate": {
+                  "attribute": "",
+                  "operator": "count"
+                },
+                "suffix": "",
+                "prefix": ""
+              },
+              "style": {
+                "widget_style": {
+                  "definition": {
+                    "color": {
+                      "fixed": "#7b48be",
+                      "opacity": 1
+                    }
+                  }
+                },
+                "auto_style": {
+                  "custom": true,
+                  "allowed": false,
+                  "definition": {
+                    "color": {
+                      "attribute": "category_name",
+                      "quantification": "category",
+                      "range": [
+                        "#5F4690",
+                        "#1D6996",
+                        "#38A6A5",
+                        "#0F8554",
+                        "#73AF48",
+                        "#EDAD08",
+                        "#E17C05",
+                        "#CC503E",
+                        "#94346E",
+                        "#6F4070",
+                        "#666666"
+                      ]
+                    }
+                  }
+                }
+              },
+              "source": {
+                "id": "a0"
+              }
+            },
+            {
+              "id": "7cd07c63-5bf8-470d-97b0-53285f725aa5",
+              "type": "formula",
+              "title": "Número de tweets",
+              "order": 1,
+              "layer_id": "bad5d98b-f862-4bea-bb6b-3db4a30cde75",
+              "options": {
+                "column": "cartodb_id",
+                "operation": "count",
+                "sync_on_data_change": true,
+                "sync_on_bbox_change": true
+              },
+              "style": {
+                "widget_style": {
+                  "definition": {
+                    "color": {
+                      "fixed": "#7b48be",
+                      "opacity": 1
+                    }
+                  }
+                },
+                "auto_style": {
+                  "custom": false,
+                  "allowed": false
+                }
+              },
+              "source": {
+                "id": "a0"
+              }
+            },
+            {
+              "id": "aba58ebe-3487-46d8-a40e-1b7bf05f1f69",
+              "type": "time-series",
+              "title": "time_date__t",
+              "order": 2,
+              "layer_id": "bad5d98b-f862-4bea-bb6b-3db4a30cde75",
+              "options": {
+                "column": "postedtime",
+                "bins": 128,
+                "animated": true,
+                "sync_on_data_change": true,
+                "sync_on_bbox_change": true
+              },
+              "style": {
+                "widget_style": {
+                  "definition": {
+                    "color": {
+                      "fixed": "#7b48be",
+                      "opacity": 1
+                    }
+                  }
+                },
+                "auto_style": {
+                  "custom": true,
+                  "allowed": false,
+                  "definition": {
+                    "color": {
+                      "attribute": "postedtime",
+                      "quantification": "quantiles",
+                      "range": [
+                        "#ffc6c4",
+                        "#f4a3a8",
+                        "#e38191",
+                        "#cc607d",
+                        "#ad466c",
+                        "#8b3058",
+                        "#672044"
+                      ]
+                    }
+                  }
+                }
+              },
+              "source": {
+                "id": "a0"
+              }
+            }
+          ],
+          "zoom": 1,
+          "analyses": [
+            {
+              "id": "a0",
+              "type": "source",
+              "params": {
+              "query": "SELECT cartodb_id, the_geom_webmercator, postedtime, category_name, CASE WHEN category_name ilike 'Real Madrid' OR category_name ilike '' THEN 'Real Madrid' WHEN category_name ilike 'a por la 13' THEN '#APorLa13' WHEN category_name ilike 'Cristiano%' THEN 'Ronaldo' WHEN category_name ilike 'Benzema' THEN 'Benzema' WHEN category_name ilike 'Marcelo' THEN 'Marcelo' ELSE 'Otros jugadores' END as tweet FROM realmadridweb.champions_18 ORDER BY tweet ASC"              },
+              "options": {
+                "table_name": "realmadridweb.champions_18",
+                "simple_geom": "point"
+              }
+            }
+          ],
+          "vector": false
+        }
+        var torqueLayer;
+        cartodb.deepInsights.createDashboard('#dashboard', my_vizjson, {
+          no_cdn: false,
+          scrollwheel: true,
+          cartodb_logo: false,
+          share_urls: true
+        },function(error, layers) {
+          torqueLayer = layers._dashboard.vis._layersCollection.getTorqueLayers()[0];
+          torqueLayer.pause();
+          torqueLayer.set("step", 0);
+        }
+      );
+
+
+
+
+      }
+    </script>
+  </body>
+</html>
