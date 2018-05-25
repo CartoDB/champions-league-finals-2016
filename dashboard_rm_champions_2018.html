@@ -8,7 +8,7 @@
     <meta name=viewport content="width=device-width initial-scale=1">
     <link rel="stylesheet" href="./dist-2017/themes/css/deep-insights.css" />
     <link rel="stylesheet" href="./css/champions_no_blue_bar.css" />
-    <script src="./dist-2017/deep-insights.uncompressed.js"></script>
+    <script src="./dist-2017/deep-insights.min.js"></script>
     <style type="text/css">
       html, body {
         position:relative;
@@ -310,7 +310,7 @@
               "id": "a0",
               "type": "source",
               "params": {
-              "query": "SELECT cartodb_id, the_geom_webmercator, postedtime, category_name, CASE WHEN category_name ilike 'Real Madrid' OR category_name ilike '' THEN 'Real Madrid' WHEN category_name ilike 'a por la 13' THEN '#APorLa13' WHEN category_name ilike 'Cristiano%' THEN 'Ronaldo' WHEN category_name ilike 'Benzema' THEN 'Benzema' WHEN category_name ilike 'Marcelo' THEN 'Marcelo' ELSE 'Otros jugadores' END as tweet FROM realmadridweb.champions_18 ORDER BY tweet ASC"              },
+              "query": "SELECT cartodb_id, the_geom_webmercator, postedtime, category_name, CASE WHEN category_name ilike 'Real Madrid' OR category_name ilike '' THEN 'Real Madrid' WHEN category_name ilike 'a por la 13' THEN '#APorLa13' WHEN category_name ilike 'Cristiano%' THEN 'Ronaldo' WHEN category_name ilike 'Benzema' THEN 'Benzema' WHEN category_name ilike 'Marcelo' THEN 'Marcelo' ELSE 'Otros jugadores' END as tweet FROM realmadridweb.champions_18 where postedtime > '2018-05-20'"              },
               "options": {
                 "table_name": "realmadridweb.champions_18",
                 "simple_geom": "point"
@@ -327,8 +327,8 @@
           share_urls: true
         },function(error, layers) {
           torqueLayer = layers._dashboard.vis._layersCollection.getTorqueLayers()[0];
-          torqueLayer.pause();
-          torqueLayer.set("step", 0);
+          //torqueLayer.pause();
+          //torqueLayer.set("step", 0);
         }
       );
 
