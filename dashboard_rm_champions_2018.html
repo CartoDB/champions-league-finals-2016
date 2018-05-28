@@ -84,12 +84,12 @@
                   "definition": {
                     "categories": [
                       {
-                        "title": "Real Madrid",
+                        "title": "Real Madrid #APorLa13",
                         "color": "#7b48be"
                       },
                       {
-                        "title": "#APorLa13",
-                        "color": "#ffcc00"
+                        "title": "Gareth Bale",
+                        "color": "#ee324e"
                       },
                       {
                         "title": "Ronaldo",
@@ -98,10 +98,6 @@
                       {
                         "title": "Benzema",
                         "color": "#037cf1"
-                      },
-                      {
-                        "title": "Marcelo",
-                        "color": "#ee324e"
                       },
                       {
                         "title": "Otros jugadores",
@@ -129,7 +125,7 @@
               "cartocss": 'Map{-torque-frame-count:128;-torque-animation-duration:30;-torque-time-attribute:"postedtime";-torque-aggregation-function:"CDB_Math_Mode(value)";-torque-resolution:2;-torque-data-aggregation:linear}#layer{marker-fill:ramp([value],(#fff,#7b48be,#55a502,#037cf1,#ee324e,#fc0),(1,2,3,4,5,6),"=");comp-op:src-over;marker-fill-opacity:.6;marker-line-color:#FFF;marker-line-width:0;marker-line-opacity:1;marker-type:ellipse;marker-width:2}#layer[frame-offset=1]{marker-width:4;marker-fill-opacity:.16}#layer[frame-offset=2]{marker-width:5;marker-fill-opacity:.08}#layer[frame-offset=3]{marker-width:6;marker-fill-opacity:.05}#layer[frame-offset=4]{marker-width:7;marker-fill-opacity:.02}',
               "sql": "SELECT cartodb_id, the_geom_webmercator, category_name, postedtime FROM realmadridweb.champions_18",
               "source": "a0",
-              "sql_wrap": "select *, (CASE WHEN \"tweet\" = 'Otros jugadores' THEN 1 WHEN \"tweet\" = 'Real Madrid' THEN 2 WHEN \"tweet\" = 'Ronaldo' THEN 3 WHEN \"tweet\" = 'Benzema' THEN 4 WHEN \"tweet\" = 'Marcelo' THEN 5 WHEN \"tweet\" = '#APorLa13' THEN 6  END) as value FROM (<%= sql %>) __wrapped"            }
+              "sql_wrap": "select *, (CASE WHEN \"tweet\" = 'Otros jugadores' THEN 1 WHEN \"tweet\" = '#APorLa13' THEN 2 WHEN \"tweet\" = 'Ronaldo' THEN 3 WHEN \"tweet\" = 'Benzema' THEN 4 WHEN \"tweet\" = 'Gareth Bale' THEN 5 END) as value FROM (<%= sql %>) __wrapped"            }
           ],
           "likes": 0,
           "map_provider": "leaflet",
@@ -310,7 +306,7 @@
               "id": "a0",
               "type": "source",
               "params": {
-              "query": "SELECT cartodb_id, the_geom_webmercator, postedtime, category_name, CASE WHEN category_name ilike 'Real Madrid' OR category_name ilike '' THEN 'Real Madrid' WHEN category_name ilike 'a por la 13' THEN '#APorLa13' WHEN category_name ilike 'Cristiano%' THEN 'Ronaldo' WHEN category_name ilike 'Benzema' THEN 'Benzema' WHEN category_name ilike 'Marcelo' THEN 'Marcelo' ELSE 'Otros jugadores' END as tweet FROM realmadridweb.champions_18 where postedtime > '2018-05-20'"              },
+              "query": "SELECT cartodb_id, the_geom_webmercator, postedtime, category_name, CASE WHEN category_name ilike 'Real Madrid' OR category_name ilike 'a por la 13' OR category_name ilike '' THEN '#APorLa13' WHEN category_name ilike 'Cristiano%' THEN 'Ronaldo' WHEN category_name ilike 'Benzema' THEN 'Benzema' WHEN category_name ilike 'Gareth Bale' THEN 'Gareth Bale' ELSE 'Otros jugadores' END as tweet FROM realmadridweb.champions_18 where postedtime between '2018-05-26' and '2018-05-28'"              },
               "options": {
                 "table_name": "realmadridweb.champions_18",
                 "simple_geom": "point"
